@@ -1,48 +1,41 @@
+"use client";
+
+import Navbar from "./components/Navbar";
+import Background from "./components/Background";
 import Hero from "./components/Hero";
-import Section from "./components/Section";
-import ProjectCard from "./components/ProjectCard";
-import { projects } from "@/lib/projects";
+import Projects from "./components/Projects";
 import Skills from "./components/Skills";
-import { skillsByCategory } from "@/lib/skills";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact"; // new
+
 export default function HomePage() {
   return (
-    <>
-      <Hero />
+    <div className="relative bg-gray-900 text-white min-h-screen overflow-x-hidden">
+      <Background />
 
-      <Section id="projects" title="Academic Projects">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.title} project={p} index={i} />
-          ))}
-        </div>
-      </Section>
+      <Navbar />
 
-      <Section id="skills" title="Skills">
-         <Skills categories={skillsByCategory} />
-      </Section>
+      <main className="relative z-10">
+        <section id="home">
+          <Hero />
+        </section>
 
-      <Section id="contact" title="Contact">
-        <div className="card p-6 text-center">
-          <p className="text-zinc-300">
-            Want to collaborate or have questions? Reach out:
-          </p>
-          <div className="mt-3 flex justify-center gap-4">
-            <a
-              href="mailto:thejaswi4uns@gmail.com"
-              className="underline underline-offset-4"
-            >
-              Email
-            </a>
-            <a
-              href="https://www.linkedin.com/in/thejaswi-s-165b0a256/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </Section>
-    </>
+        <section id="projects" className="scroll-mt-24">
+          <Projects />
+        </section>
+
+        <section id="skills">
+          <Skills />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+
+        <section id="footer">
+          <Footer />
+        </section>
+      </main>
+    </div>
   );
 }

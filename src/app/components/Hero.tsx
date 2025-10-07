@@ -1,47 +1,77 @@
 "use client";
-import { motion } from "framer-motion";
-import SocialLinks from "./SocialLinks";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function Hero() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const paraRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+
+    const lines = headingRef.current.querySelectorAll(".line");
+    lines.forEach((line) => {
+      const text = line.textContent || "";
+      line.innerHTML = "";
+      text.split("").forEach((char) => {
+        const span = document.createElement("span");
+        span.textContent = char === " " ? "\u00A0" : char; // preserve spaces
+        span.className = "inline-block";
+        line.appendChild(span);
+      });
+    });
+
+    const letters = headingRef.current.querySelectorAll("span");
+    gsap.fromTo(
+      letters,
+      { opacity: 0, y: 50, rotationX: -90 },
+      {
+        opacity: 1,
+        y: 0,
+        rotationX: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        stagger: 0.05,
+      }
+    );
+
+    if (paraRef.current) {
+      gsap.fromTo(
+        paraRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, delay: 1, ease: "power2.out" }
+      );
+    }
+  }, []);
+
   return (
-    <section className="text-center py-4">
-      <motion.h1
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.05 }}
-        className="text-4xl md:text-5xl font-semibold leading-tight"
-      >
-        Hi, I’m <span className="gradient-text">Thejaswi</span>.<br />
-        I build intelligent, interactive software.
-      </motion.h1>
+    <section className="relative min-h-[calc(100vh-4rem)] flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+      {/* Noise overlay */}
+      <div className="absolute inset-0 bg-[url('/textures/noise.png')] opacity-10 z-10 pointer-events-none"></div>
 
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-        className="mt-4 text-zinc-300 max-w-2xl mx-auto"
-      >
-        MCA student & maker. Recent work includes a multi‑modal ML model for
-        <span className="mx-1 font-medium">ancient artifact dating</span>, IoT mini‑project, and full‑stack web apps.
-      </motion.p>
+      {/* Blurred floating gradient shapes */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-purple-500 opacity-20 blur-3xl animate-float-slow z-0"></div>
+      <div className="absolute top-20 right-[-10rem] w-96 h-96 rounded-full bg-cyan-400 opacity-20 blur-3xl animate-float-slow delay-2s z-0"></div>
+      <div className="absolute bottom-[-12rem] left-[-10rem] w-[28rem] h-[28rem] rounded-full bg-pink-400 opacity-15 blur-3xl animate-float-slow delay-1s z-0"></div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-        className="mt-6 flex justify-center gap-3"
+      {/* Heading */}
+      <h1
+        ref={headingRef}
+        className="relative z-20 text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-snug"
       >
-        <motion.a whileHover={{ scale: 1.03 }} whileTap={{ scale: .98 }} href="#projects" className="btn btn-primary">
-          See Projects
-        </motion.a>
-        <motion.a whileHover={{ scale: 1.03 }} whileTap={{ scale: .98 }} href="#contact" className="btn btn-outline">
-          Contact
-        </motion.a>
-      </motion.div>
+        <div className="line">Hi, I’m Thejaswi.</div>
+        <div className="line">I build intelligent, interactive software.</div>
+        <div className="line">MCA student & maker.</div>
+      </h1>
 
-      <div className="mt-6 flex justify-center">
-        <SocialLinks />
-      </div>
+      {/* Paragraph */}
+      <p
+        ref={paraRef}
+        className="relative z-20 mt-6 text-gray-200 max-w-2xl text-lg"
+      >
+        Recent work includes a multi‑modal ML model for ancient artifact
+        dating, IoT mini‑project, and full‑stack web apps.
+      </p>
     </section>
   );
 }
