@@ -12,18 +12,18 @@ export const skillsByCategory: SkillCategory[] = [
   },
   {
     key: "languages",
-    title: "Languages",
-    items: ["Java", "Python", "TypeScript", "JavaScript", "HTML", "CSS"],
+    title: "Programming Languages",
+    items: ["Java", "Python", "TypeScript", "JavaScript"],
   },
   {
     key: "frontend",
     title: "Frontend",
-    items: ["ReactJS", "Next.js", "Tailwind CSS", "Bootstrap"],
+    items: ["HTML", "CSS", "React", "Next.js", "Tailwind CSS", "Bootstrap"],
   },
   {
     key: "backend",
-    title: "Backend & Web",
-    items: ["NodeJS", "ExpressJS", "Java EE (JSP, Servlets, JDBC)", "PHP"],
+    title: "Backend",
+    items: ["Spring Boot", "Node.js", "Express.js", "Java EE (JSP, Servlets, JDBC)", "PHP"],
   },
   {
     key: "databases",
@@ -31,9 +31,9 @@ export const skillsByCategory: SkillCategory[] = [
     items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"],
   },
   {
-    key: "ai",
+    key: "data_ai",
     title: "AI & Analytics",
-    items: ["Machine Learning", "Data Analysis"], 
+    items: ["Machine Learning", "Data Analysis"],
   },
   {
     key: "tools",
@@ -41,13 +41,13 @@ export const skillsByCategory: SkillCategory[] = [
     items: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "IntelliJ IDEA"],
   },
   {
+    key: "other",
+    title: "Other",
+    items: ["Mobile App Development", "Adobe Premiere Pro"],
+  },
+  {
     key: "os",
     title: "Operating Systems",
     items: ["Linux"],
-  },
-  {
-    key: "other",
-    title: "Other",
-    items: ["Mobile Application Development", "Adobe Premiere Pro"],
   },
 ];
