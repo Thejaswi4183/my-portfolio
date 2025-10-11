@@ -38,7 +38,7 @@ export const skillsByCategory: SkillCategory[] = [
   {
     key: "tools",
     title: "Tools & IDEs",
-    items: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "IntelliJ IDEA"],
+    items: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "IntelliJ IDEA","Postman"],
   },
   {
     key: "other",
