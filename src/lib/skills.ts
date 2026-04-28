@@ -23,7 +23,13 @@ export const skillsByCategory: SkillCategory[] = [
   {
     key: "backend",
     title: "Backend",
-    items: ["Spring Boot", "Node.js", "Express.js", "Java EE (JSP, Servlets, JDBC)", "PHP"],
+    items: [
+      "Spring Boot",
+      "Node.js",
+      "Express.js",
+      "Java EE (JSP, Servlets, JDBC)",
+      "PHP",
+    ],
   },
   {
     key: "databases",
@@ -31,14 +37,33 @@ export const skillsByCategory: SkillCategory[] = [
     items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"],
   },
   {
+    key: "devops",
+    title: "Deployment & DevOps",
+    items: ["Docker", "Hugging Face Spaces", "REST APIs", "API Deployment"],
+  },
+  {
     key: "data_ai",
     title: "AI & Analytics",
-    items: ["Machine Learning", "Data Analysis"],
+    items: [
+      "AI & Machine Learning",
+      "Deep Learning",
+      "Computer Vision (ResNet50)",
+      "NLP (LSTM)",
+      "Multimodal Models",
+      "TensorFlow/Keras",
+    ],
   },
   {
     key: "tools",
     title: "Tools & IDEs",
-    items: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "IntelliJ IDEA","Postman"],
+    items: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Jupyter Notebook",
+      "IntelliJ IDEA",
+      "Postman",
+    ],
   },
   {
     key: "other",
